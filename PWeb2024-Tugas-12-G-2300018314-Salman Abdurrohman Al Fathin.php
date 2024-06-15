@@ -1,70 +1,87 @@
 <?php
-$arrBuah = array("Mangga", "Apel", "Pisang", "Jeruk");
-echo $arrBuah[0] . "<br>";
-echo $arrBuah[3] . "<br><br>";
+   echo "<b>Array Dasar:</b><br>";
+   $arrHewan = array("Kucing", "Unta", "Kambing", "Rusa");
+   echo $arrHewan[0] . "<br>";
+   echo $arrHewan[3] . "<br><br>";
 
-$arrWarna = array();
-$arrWarna[] = "Merah";
-$arrWarna[] = "Biru";
-$arrWarna[] = "Hijau";
-$arrWarna[] = "Putih";
-echo $arrWarna[0] . "<br>";
-echo $arrWarna[2] . "<br><br>";
+   $arrOrgan = array();
+   $arrOrgan[] = "Kepala";
+   $arrOrgan[] = "Badan";
+   $arrOrgan[] = "Tangan";
+   $arrOrgan[] = "Kaki";
+   echo $arrOrgan[0] . "<br>";
+   echo $arrOrgan[2] . "<br><br>";
 ?>
 
 <?php
-   $arrNilai = array("Fulan" => 80, "Fulin" => 90, "Fulun" => 75, "Falan" => 85);
-   echo $arrNilai['Fulan']."<br>";
-   echo $arrNilai['Fulin']."<br><br>";
+   echo "<b>Array Asosiatif:</b><br>";
+   $arrNim = array("Maman" => 314, "Syalsa" => 324, "Jarwo" => 276, "Yanti" => 204);
+   echo $arrNim['Maman']."<br>";
+   echo $arrNim['Syalsa']."<br><br>";
 
-   $arrNilai = array();
-   $arrNilai['Amin'] = 80;
-   $arrNilai['Aman'] = 95;
-   $arrNilai['Amen'] = 77;
-   echo $arrNilai['Aman']."<br>";
-   echo $arrNilai['Amin']."<br>";
+   $arrNim = array();
+   $arrNim['Amin'] = 280;
+   $arrNim['Agus'] = 295;
+   $arrNim['Tukimin'] = 277;
+   echo $arrNim['Amin']."<br>";
+   echo $arrNim['Agus']."<br><br>";
 ?>
 
 <?php
    $arrWarna = array("Red", "Orange", "Purple", "Green", "Blue", "Pink");
-   echo "Menampilkan isi array dengan FOR: <br>";
+   echo "<b>Menampilkan isi array dasar dengan FOR:</b><br>";
    for($i = 0; $i < count($arrWarna); $i++){
-      echo "Warna pelangi <font color = $arrWarna[$i]>".$arrWarna[$i]."</font><br>";
+      echo "Nama warna: <font color = $arrWarna[$i]>".$arrWarna[$i]."</font><br>";
    }
-      
-   echo "<br>Menampilkan isi array dengan FOREACH: <br>";
+
+   echo "<br>";
+   
+   echo "<b>Menampilkan isi array dasar dengan FOREACH:</b> <br>";
    foreach ($arrWarna as $warna) {
-      echo "Warna pelangi <font color = $warna>".$warna."</font><br>";
+      echo "Nama warna: <font color = $warna>".$warna."</font><br>";
+   }
+   echo "<br>";
+?>
+
+<?php
+   $arrNim = array("Maman" => 314, "Syalsa" => 324, "Jarwo" => 276, "Yanti" => 204);
+   echo "<b>Menampilkan isi array ASOSIATIF dengan FOREACH:</b><br>";
+   foreach ($arrNim as $nama => $nim){
+   echo "NIM $nama = $nim <br>";
+   }
+   echo "<br>";
+   
+   //->FUNGSI TIDAK KOMPATIBEL
+   // echo "<br>Menampilkan isi array asosiatif dengan WHILE dan LIST: <br>";
+   // reset($arrNim);
+   // while(list($nama, $nim) = each($arrNim)){
+   //    echo "NIM $nama = $nim <br>";
+   // }
+
+   echo "<b>Menampilkan isi array ASOSIATIF dengan WHILE:</b> <br>";
+   reset($arrNim); // reset pointer array
+   while ($nama = key($arrNim)) {
+      $nim = current($arrNim);
+      echo "NIM $nama = $nim <br>";
+      next($arrNim); // Geser pointer ke elemen selanjutnya
    }
 ?>
 
 <?php
-   $arrNilai = array("Fulan" => 80, "Fulin" => 90, "Fulun" => 75, "Falan" => 85);
-   echo "Menampilkan isi array asosiatif dengan foreach: <br>";
-   foreach ($arrNilai as $nama => $nilai){
-      echo "Nilai $nama = $nilai <br>";
-      }
-      
-   reset($arrNilai);
-   echo "<br>Menampilkan isi array asosiatif dengan WHILE dan LIST: <br>";
-   while(list($nama, $nilai) = each($arrNilai)){
-      echo "Nilai $nama = $nilai <br>";
-   }
-?>
-
-<?php
+   echo "<br>";
+   echo "<b>Menampilkan array dengan `print_r` khusus array:</b>";
    $arrWarna = array("Blue", "Black", "Red", "Yellow", "Pink");
-   $arrNilai = array("Fulan" => 80, "Fulin" => 90, "Fulun" => 75, "Falan" => 85);
+   $arrNim = array("Maman" => 314, "Syalsa" => 324, "Jarwo" => 276, "Yanti" => 204);
    echo "<pre>";
    print_r($arrWarna);
    echo "<br>";
-   print_r($arrNilai);
+   print_r($arrNim);
    echo "</pre>";
 ?>
 
 <?php
 // Mengurutkan array dengan sort() dan rsort()
-   $arrNilai = array("Fulan" => 80, "Fulin" => 90, "Fulun" => 75, "Falan" => 85);
+   $arrNilai = array("Maman" => 314, "Syalsa" => 324, "Jarwo" => 276, "Yanti" => 204);
    echo "<b>Array sebelum diurutkan</b>";
    echo "<pre>";
    print_r($arrNilai);
@@ -87,7 +104,7 @@ echo $arrWarna[2] . "<br><br>";
 
 <?php
 // Mengurutkan array dengan asort() dan arsort()
-   $arrNilai = array("Fulan" => 80, "Fulin" => 90, "Fulun" => 75, "Falan" => 85);
+   $arrNilai = array("Maman" => 314, "Syalsa" => 324, "Jarwo" => 276, "Yanti" => 204);
    echo "<b>Array sebelum diurutkan</b>";
    echo "<pre>";
    print_r($arrNilai);
@@ -110,7 +127,7 @@ echo $arrWarna[2] . "<br><br>";
 
 <?php
 // Mengurutkan array dengan ksort() dan krsort()
-   $arrNilai = array("Fulan" => 80, "Fulin" => 90, "Fulun" => 75, "Falan" => 85);
+   $arrNilai = array("Maman" => 314, "Syalsa" => 324, "Jarwo" => 276, "Yanti" => 204);
    echo "<b>Array sebelum diurutkan</b>";
    echo "<pre>";
    print_r($arrNilai);
@@ -132,95 +149,121 @@ echo $arrWarna[2] . "<br><br>";
 ?>
 
 <?php
+   echo "<b>Memainkan Posisi Pointer dalam Array:</b>";
 // Mengatur Posisi Pointer dalam Array
-   $transport = array("Jalan Kaki", "Pit Onthel", "Montor", "Montor Mabur");
+   $negara = array("Indonesia", "Arab Saudi", "Amerika", "Russia");
    echo "<pre>";
-   print_r($transport);
+   print_r($negara);
    echo "</pre>";
-   $mode = current($transport);
-   echo $mode."<br>";
-   $mode = next($transport);
-   echo $mode."<br>";
-   $mode = current($transport);
-   echo $mode."<br>";
-   $mode = prev($transport);
-   echo $mode."<br>";
-   $mode = end($transport);
-   echo $mode."<br>";
-   $mode = current($transport);
-   echo $mode."<br>";
-?>
 
-<?php
-// Mencari elemen array
-   $arrBuah = array("Mangga", "Apel", "Pisang", "Jeruk", "Kedondong");
-   if(in_array("Kedondong", $arrBuah)){
-      echo "Ada buah Kedondong di dalam array tersebut!<br>";
-   }else{
-      echo "Tidak ada buah Kedondong di dalam array tersebut!<br>";
-   }
-?>
-
-<?php
-   function cetak_ganjilA(){
-      for($i = 0; $i < 100; $i++){
-         if($i % 2 == 1){
-            echo "$i, ";
-         }
-      }
-   }
-
-   cetak_ganjilA();
+   echo "<b>Beberapa mode geser pointer:</b><br>";
+   $mode = current($negara);
+   echo "current: " . $mode."<br>";
+   $mode = next($negara);
+   echo "next:" . $mode."<br>";
+   $mode = current($negara);
+   echo "current: " . $mode."<br>";
+   $mode = prev($negara);
+   echo "previous: " . $mode."<br>";
+   $mode = end($negara);
+   echo "end: " . $mode."<br>";
+   $mode = current($negara);
+   echo "current: " . $mode."<br>";
    echo "<br>";
 ?>
 
 <?php
-   function cetak_ganjilB($awal, $akhir){
-      for($i = $awal; $i < $akhir; $i++){
-         if($i % 2 == 1){
-            echo "$i, ";
+   echo "<b>Mencari elemen dengan alur kontrol:</b><br>";
+// Mencari elemen array
+   $arrOrgan = array("Kepala", "Badan", "Tangan", "kaki");
+   if(in_array("Tangan", $arrOrgan)){
+      echo "Ada organ Tangan di dalam array tersebut!<br>";
+   }else{
+      echo "Tidak ada organ Tangan di dalam array tersebut!<br>";
+   }
+   echo "<br>";
+?>
+
+<?php
+   echo "<b>Fungsi UDF (Mencetak bil Prima):</b><br>";
+   function prima($n)
+   {
+      if ($n <= 1){
+         return false;
+      }
+      for ($i = 2; $i <= sqrt($n); $i++) {
+         if ($n % $i == 0){
+         return false;
+         }
+      }
+      return true;
+   }
+
+   for ($i = 1; $i <= 100; $i++) {
+      if (prima($i)){
+         echo $i . ", ";
+      }
+   }
+   echo "<br><br>";
+?>
+
+<?php
+   function primaRentang($awal, $akhir){
+      for ($i = $awal; $i <= $akhir; $i++) {
+         if (prima($i)) {
+            echo $i . ", ";
          }
       }
    }
-
    $a = 10;
    $b = 50;
-   echo "<b>Bilangan ganjil dari $a sampai $b, adalah: </b><br>";
-   cetak_ganjilB($a, $b);
-   echo "<br>";
+   echo "<b>Bilangan prima dari $a sampai $b, adalah: </b><br>";
+   primaRentang($a, $b);
+   echo "<br><br>";
 ?>
 
 <?php
-   function luas_lingkaran($jari){
-      return 3.14 * $jari * $jari;
+   echo "<b>Fungsi hitung volume: </b><br>";
+   function volumeKubus($sisi){
+      return $sisi * $sisi * $sisi;
    }
-
-   $r = 10;
-   echo "Luas Lingkaran dengan jari-jari $r = ";
-   echo luas_lingkaran($r);
+   
+   $s = 10;
+   echo "Volume kubus dengan panjang rusuk $s = ";
+   echo volumeKubus($s);
+   echo "<br><br>";
 ?>
 
 <?php
+   echo "<b>Fungsi tambah string: </b><br>";
    function tambah_string($str){
-      $str = $str. ", Yogyakarta";
+      $str = $str. "Yogyakarta";
       return $str;
    }
 
-   $string = "Universitas Ahmad Dahlan";
-   echo "<br>";
+   $string = "Daerah Istimewa ";
    echo "\$string = $string<br>";
    echo tambah_string($string)."<br>";
    echo "\$string = $string<br>";
+   echo "<br><br>";
 ?>
 
 <?php
-   function luas_lingkaranA($jari)
-   {
-      return 3.14 * $jari * $jari;
-   }
-
+   echo "<b>Menampilkan fungsi PHP: </b><br>";
    $arr = get_defined_functions();
    echo "<pre>";
    print_r($arr);
    echo "</pre>";
+?>
+
+<?php
+   echo "<b>Memeriksa status fungsi buatan: </b><br>";
+   // Memeriksa apakah fungsi prima() ada dalam kumpulan fungsi
+   $listFungsi = get_defined_functions();
+   foreach ($listFungsi['user'] as $namaFungsi) {
+      if ($namaFungsi == 'prima') {
+         echo "Fungsi `prima()` ada dalam kumpulan fungsi.\n";
+         break;
+      }
+   }
 ?>
